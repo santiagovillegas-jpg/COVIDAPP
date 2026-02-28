@@ -1,13 +1,13 @@
-# Dossier del Proyecto (COVIDAPP)
+# Dossier de Documentación Técnica - COVIDAPP
 
-Esta sección centraliza toda la documentación técnica detallada y los entregables finales del proyecto COVIDAPP.
+Este espacio centraliza toda la documentación técnica consolidada y los informes de ingeniería detallados que respaldan el desarrollo del proyecto **COVIDAPP**. La documentación sigue estándares internacionales y metodologías académicas de ingeniería.
 
-## Contenido Destacado
-- **CDIO III (`cdioIII.pdf`):** Documento principal que detalla el desarrollo siguiendo el marco de trabajo Concebir-Diseñar-Implementar-Operar.
-- **Informes Técnicos:** Análisis detallado de las soluciones implementadas.
-- **Manuales de Usuario:** Guías de operación para los administradores y pacientes de la institución Covida.
+## Contenido Técnico Principal
+- **CDIO III (`cdioIII.pdf`):** Documento maestro detallando las etapas de Concebir, Diseñar, Implementar y Operar del sistema integral para la institución **Covida**.
+- **Informes Técnicos:** Análisis profundos sobre la arquitectura del software, selección de tecnologías y evaluaciones de desempeño.
+- **Manuales de Operación:** Guías técnicas para administradores sobre la gestión y el mantenimiento de la plataforma.
 
-## Estado de la Documentación
-* **CDIO III:** Versión 1.0 (Disponible)
-* **Informes:** En desarrollo.
-* **Manuales:** Pendiente de desarrollo (fase final).
+## Metodología de Documentación
+1.  **Enfoque de Ingeniería:** Basado en el marco de trabajo CDIO para asegurar la integralidad técnica.
+2.  **Calidad Documental:** Estándares de redacción formal y técnica para garantizar la claridad y utilidad de la información.
+3.  **Actualización Continua:** La documentación se actualiza en paralelo con cada nueva iteración del software.

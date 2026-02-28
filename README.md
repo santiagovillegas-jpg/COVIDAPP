@@ -1,25 +1,26 @@
-# COVIDAPP - Gestión Institucional Covida
+# COVIDAPP - Sistema de Gestión Institucional Covida
 
 ## Descripción del Proyecto
-COVIDAPP es una solución integral diseñada para la institución **Covida**, orientada a la gestión eficiente de usuarios, pacientes, responsables y administradores. El proyecto consiste en una plataforma web con diseño responsivo para dispositivos móviles, facilitando el seguimiento y la administración de datos en tiempo real.
+**COVIDAPP** es una plataforma digital integral desarrollada para la institución **Covida**, diseñada para optimizar la gestión de usuarios, pacientes y personal administrativo. La solución se centra en proporcionar una interfaz web intuitiva y responsiva que permita el seguimiento eficiente de datos en un entorno institucional.
 
-Actualmente, el proyecto cuenta con el desarrollo completo del Front-end, mientras que la integración de la base de datos y la lógica del Back-end se encuentran en fase de implementación.
+El enfoque actual del proyecto es el desarrollo de una arquitectura de software robusta, priorizando la experiencia del usuario (UX) y la integridad de la información.
 
-## Equipo de Desarrollo
-* **Juan José Botero**
-* **Santiago Villegas**
-* **Juan Pablo García**
+## Estructura del Proyecto
+El repositorio está organizado en tres pilares fundamentales que cubren el ciclo de vida del desarrollo:
 
-## Estructura del Repositorio
-El proyecto se organiza en las siguientes dimensiones:
+*   **[01_Gestion](./01_Gestion):** Contiene la documentación administrativa, planificación estratégica, actas de seguimiento y cronogramas del proyecto.
+*   **[02_Firmware (Web App)](./02_Firmware):** Núcleo del desarrollo de software. Incluye la interfaz de usuario (Front-end), prototipos de navegación y la lógica de interacción del sistema.
+*   **[03_Dossier](./03_Dossier):** Repositorio de documentación técnica formal, incluyendo el documento CDIO III y manuales técnicos.
 
-* **[01_Gestion](./01_Gestion):** Documentación administrativa, actas de reuniones, Bill of Materials (BOM) y cronogramas de actividades.
-* **[02_Hardware](./02_Hardware):** Diseño de circuitos, selección de componentes y esquemáticos.
-* **[03_Firmware](./03_Firmware):** Código fuente para el control de dispositivos embebidos.
-* **[04_Dossier](./04_Dossier):** Documentación técnica final, entregables y el archivo CDIO III.
+## Estado de Desarrollo
+El proyecto se encuentra en una fase avanzada de prototipado funcional:
 
-## Estado del Proyecto
-- [x] Diseño de Interfaz (Front-end)
-- [ ] Desarrollo de Back-end (En progreso)
-- [ ] Implementación de Base de Datos (En progreso)
-- [ ] Integración Hardware-Firmware (En progreso)
+- [x] **Diseño de Interfaz (UI/UX):** Implementado y optimizado para navegación web y móvil.
+- [x] **Arquitectura de Navegación:** Estructura de archivos y flujo de usuario definidos.
+- [ ] **Persistencia de Datos:** Integración de servicios de backend y base de datos (En planificación).
+- [ ] **Validación Sistémica:** Pruebas de usuario y despliegue final (Pendiente).
+
+## Equipo de Trabajo
+*   **Juan José Botero**
+*   **Santiago Villegas**
+*   **Juan Pablo García**
