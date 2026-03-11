@@ -59,7 +59,7 @@
     </form>
     <div class="text-center mt-2">
       <a href="registro.html" class="text-secondary small">¿No tienes cuenta? Regístrate</a><br>
-      <a href="#" class="text-primary small">¿Olvidaste el usuario o contraseña?</a>
+      <a href="#" class="text-primary small" id="forgotLink">¿Olvidaste el usuario o contraseña?</a>
     </div>
     <div id="mensaje" class="text-danger mt-3"></div>
   </div>
@@ -68,9 +68,9 @@
 <!-- Footer -->
 <footer>
   <div>
-    <a href="#">Dirección</a> |
-    <a href="#">Número</a> |
-    <a href="#">Guía de ayuda a discapacitados</a>
+    <a href="#" onclick="alert('Funcionalidad en desarrollo')">Dirección</a> |
+    <a href="#" onclick="alert('Funcionalidad en desarrollo')">Número</a> |
+    <a href="#" onclick="alert('Funcionalidad en desarrollo')">Guía de ayuda a discapacitados</a>
   </div>
   <div class="text-muted mt-2">©️ 2025 Universidad del Quindío | Alpha build v0.0.1</div>
 </footer>
@@ -82,6 +82,11 @@
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
   }
 
+  document.getElementById("forgotLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    alert("Función de recuperación en desarrollo. Contacte al administrador.");
+  });
+
   document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
     const usuarioIngresado = document.getElementById("usuario").value;
@@ -92,6 +97,7 @@
     const usuarioValido = usuarios.find(u => u.usuario === usuarioIngresado && u.contrasena === contrasenaIngresada);
 
     if (usuarioValido) {
+      localStorage.setItem("usuarioLogueado", usuarioIngresado);
       window.location.href = 'bienvenida.html';
     } else {
       mensaje.textContent = "Usuario o contraseña incorrectos.";
