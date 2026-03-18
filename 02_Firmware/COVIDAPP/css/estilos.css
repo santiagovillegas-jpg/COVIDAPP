@@ -1,0 +1,13 @@
+body {
+  background: url('../img/covida.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.login-box, .registro-box, .perfil-box {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.9);
+  color: black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
