@@ -2,138 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bienvenido - COVIDAPP</title>
+  <title>Bienvenido</title>
+  <link href="css/estilos.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      /* Patrón vectorial SVG de cruces médicas (Hero Patterns - Plus) */
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23198754' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .navbar {
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    .welcome-card {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 50px;
-      margin-top: 60px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      border: 1px solid rgba(25, 135, 84, 0.1);
-      backdrop-filter: blur(5px);
-    }
-    .welcome-title {
-      font-weight: 800;
-      color: #198754;
-      font-size: 3rem;
-    }
-    .btn-custom {
-      border-radius: 10px;
-      padding: 12px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .btn-custom:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-  </style>
 </head>
-<body class="text-center">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
-  <div class="container-fluid justify-content-center">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link fw-bold" href="bienvenida.html">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link fw-bold" href="Gallery.html">Galería</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle fw-bold" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Quiénes somos
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
-          <li><a class="dropdown-item" href="#">Misión</a></li>
-          <li><a class="dropdown-item" href="#">Visión</a></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle fw-bold" href="#" id="historialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Historial médico
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="historialDropdown">
-          <li><a class="dropdown-item" href="historial.html">Ver historial</a></li>
-          <li><a class="dropdown-item" href="historial.html">Editar historial</a></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle fw-bold" href="#" id="lugaresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Lugares de apoyo
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="lugaresDropdown">
-          <li><a class="dropdown-item" href="#">Mapa</a></li>
-          <li><a class="dropdown-item" href="#">Centros cercanos</a></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle fw-bold" href="#" id="soporteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Soporte y Contacto
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="soporteDropdown">
-          <li><h6 class="dropdown-header">Contactos</h6></li>
-          <li><a class="dropdown-item" href="#">Correo: contacto@ejemplo.com</a></li>
-          <li><a class="dropdown-item" href="#">Correo: soporte@ejemplo.com</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Teléfono: +57 301 123 4567</a></li>
-          <li><a class="dropdown-item" href="#">Teléfono: +57 302 987 6543</a></li>
-        </ul>
-      </li>
-    </ul>
+<body class="bg-light">
+
+<!-- Barra superior -->
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-white" href="#">COVIDAPP</a>
   </div>
 </nav>
 
-<div class="container d-flex justify-content-center">
-  <div class="welcome-card col-md-8">
-    <h1 class="welcome-title">¡Hola, <span id="nombreUsuario"></span>!</h1>
-    <h2 class="text-secondary mt-2">Bienvenido a COVIDAPP</h2>
-    <p class="mt-4 fs-5 text-muted">Tu información de salud está segura con nosotros. Gestiona tu historial médico y encuentra puntos de apoyo fácilmente.</p>
-    
-    <div class="mt-5">
-      <a href="historial.html" class="btn btn-success btn-custom btn-lg me-3">Gestionar Historial</a>
-      <button id="logoutBtn" class="btn btn-outline-secondary btn-custom btn-lg">Cerrar Sesión</button>
-    </div>
-  </div>
+<!-- Contenido principal -->
+<div class="container text-center mt-5">
+  <h1 class="text-success">¡Bienvenido a COVIDAPP!</h1>
+  <p id="mensajeUsuario" class="mt-3 fs-5"></p>
+
+  <!-- Botón para ir al perfil -->
+  <a href="perfil.html" class="btn btn-primary mt-3">Ir al perfil</a>
+
+  <!-- Botón para cerrar sesión -->
+  <button id="cerrarSesion" class="btn btn-outline-secondary mt-3">Cerrar sesión</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  const usuario = localStorage.getItem("usuarioLogueado");
-  if (!usuario) {
-    window.location.href = 'index.html';
-  } else {
-    document.getElementById("nombreUsuario").textContent = usuario;
-  }
+  // Mostrar usuario y rol activo
+  const usuarioActivo = localStorage.getItem("usuarioActivo");
+  const rolActivo = localStorage.getItem("rolActivo");
 
-  document.getElementById("logoutBtn").addEventListener("click", function() {
-    localStorage.removeItem("usuarioLogueado");
-    window.location.href = 'index.html';
-  });
+  document.getElementById("mensajeUsuario").textContent =
+    usuarioActivo ? `Has iniciado sesión como: ${usuarioActivo} (${rolActivo})` : "Sesión activa.";
 
-  // Alert for links under development
-  document.querySelectorAll('a[href="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      alert('Esta funcionalidad estará disponible próximamente.');
-    });
+  // Cerrar sesión
+  document.getElementById("cerrarSesion").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "index.html";
   });
 </script>
+
 </body>
 </html>
