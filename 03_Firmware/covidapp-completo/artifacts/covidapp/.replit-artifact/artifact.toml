@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "COVIDAPP"
+version = "1.0.0"
+id = "artifacts/covidapp"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+localPort = 22186
+name = "web"
+paths = ["/"]
+
+[services.development]
+run = "pnpm --filter @workspace/covidapp run dev"
+
+[services.env]
+PORT = "22186"
+BASE_PATH = "/"
+
+[services.production]
+build = ["pnpm", "--filter", "@workspace/covidapp", "run", "build"]
+publicDir = "artifacts/covidapp/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
