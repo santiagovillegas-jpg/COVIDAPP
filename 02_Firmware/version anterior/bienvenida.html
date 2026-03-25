@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido - COVIDAPP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .campana-btn {
+      position: relative;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .campana-badge {
+      position: absolute;
+      top: 0; right: 0;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 0.6rem;
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold;
+    }
+    .notif-dropdown {
+      display: none;
+      position: absolute;
+      right: 0; top: 110%;
+      width: 340px;
+      background: white;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      z-index: 999;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .notif-dropdown.show { display: block; }
+    .notif-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: default;
+    }
+    .notif-item:last-child { border-bottom: none; }
+    .notif-item.no-leida { background: #eef4ff; }
+    .notif-item.leida { opacity: 0.65; }
+    footer {
+      background-color: rgba(166,240,224,0.8);
+      text-align: center;
+      padding: 12px;
+      margin-top: 60px;
+    }
+    footer a { color: green; text-decoration: none; }
+  </style>
+</head>
+<body class="bg-light text-center">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
+  <div class="container-fluid justify-content-between">
+    <!-- Menú izquierdo -->
+    <ul class="navbar-nav d-flex flex-row gap-2 flex-wrap">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">Inicio</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="Gallery.html">Galería</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">Quiénes somos</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Misión</a></li>
+          <li><a class="dropdown-item" href="#">Visión</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">Historial médico</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="historial.html">Ver historial</a></li>
+          <li><a class="dropdown-item" href="historial.html">Editar historial</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">Lugares de apoyo</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Mapa</a></li>
+          <li><a class="dropdown-item" href="#">Centros cercanos</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown">Soporte y Contacto</a>
+        <ul class="dropdown-menu">
+          <li><h6 class="dropdown-header">Contactos</h6></li>
+          <li><a class="dropdown-item" href="#">Correo: contacto@covida.edu.co</a></li>
+          <li><a class="dropdown-item" href="#">Correo: soporte@covida.edu.co</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="tel:+573011234567">Teléfono: +57 301 123 4567</a></li>
+          <li><a class="dropdown-item" href="tel:+573029876543">Teléfono: +57 302 987 6543</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Campana de notificaciones -->
+    <div class="position-relative" id="campanaWrapper">
+      <button class="campana-btn" onclick="toggleNotificaciones()" title="Notificaciones">
+        🔔
+        <span class="campana-badge d-none" id="campanaBadge">0</span>
+      </button>
+      <div class="notif-dropdown" id="notifDropdown">
+        <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+          <strong>Notificaciones</strong>
+          <div class="d-flex gap-2">
+            <button class="btn btn-link btn-sm p-0 text-primary" onclick="marcarTodasLeidas()">Marcar leídas</button>
+            <a href="notificaciones.html" class="btn btn-link btn-sm p-0 text-secondary">Ver todas →</a>
+          </div>
+        </div>
+        <div id="notifLista">
+          <!-- JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="p-5">
+  <h1 class="text-success">¡Bienvenido a COVIDAPP!</h1>
+  <p class="mt-3">Has iniciado sesión correctamente.</p>
+
+  <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+    <a href="notificaciones.html" class="btn btn-primary">🔔 Gestionar Notificaciones</a>
+    <a href="index.html" class="btn btn-outline-secondary">Cerrar sesión</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <a href="#">Dirección</a> |
+    <a href="#">Número</a> |
+    <a href="#">Guía de ayuda a discapacitados</a>
+  </div>
+  <div class="text-muted mt-1"><small>©️ 2025 Universidad del Quindío | Alpha build v0.0.1</small></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ─── Proteger página ────────────────────────────────────────────
+if (!localStorage.getItem("sesionActiva")) {
+  window.location.href = "index.html";
+}
+
+// ─── Helpers ────────────────────────────────────────────────────
+function getNotificaciones() {
+  return JSON.parse(localStorage.getItem("notificaciones") || "[]");
+}
+function setNotificaciones(arr) {
+  localStorage.setItem("notificaciones", JSON.stringify(arr));
+}
+
+// ─── Campana ────────────────────────────────────────────────────
+function actualizarCampana() {
+  const notifs   = getNotificaciones();
+  const noLeidas = notifs.filter(n => !n.leida).length;
+  const badge    = document.getElementById("campanaBadge");
+  if (noLeidas > 0) {
+    badge.textContent = noLeidas > 9 ? "9+" : noLeidas;
+    badge.classList.remove("d-none");
+  } else {
+    badge.classList.add("d-none");
+  }
+  renderNotifDropdown(notifs);
+}
+
+function renderNotifDropdown(notifs) {
+  const lista = document.getElementById("notifLista");
+  const recientes = notifs.slice(0, 6);
+  if (recientes.length === 0) {
+    lista.innerHTML = '<p class="text-muted text-center py-3 small">Sin notificaciones</p>';
+    return;
+  }
+  const TIPOS = {
+    recordatorio: "⏰", cita: "📅", sistema: "🔔"
+  };
+  lista.innerHTML = recientes.map(n => {
+    const icono = TIPOS[n.tipo] || "🔔";
+    const fecha = new Date(n.fecha).toLocaleString("es-CO", { dateStyle:"short", timeStyle:"short" });
+    return `
+      <div class="notif-item ${n.leida ? 'leida' : 'no-leida'}">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <strong class="small">${icono} ${n.titulo}</strong>
+            <p class="mb-0 text-muted" style="font-size:0.8rem">${n.mensaje}</p>
+            <small class="text-muted">${fecha}</small>
+          </div>
+          ${!n.leida ? `<button class="btn btn-link btn-sm p-0 text-primary" style="font-size:0.75rem;white-space:nowrap" onclick="marcarUna(${n.id})">✔</button>` : ''}
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function toggleNotificaciones() {
+  document.getElementById("notifDropdown").classList.toggle("show");
+}
+function marcarUna(id) {
+  const notifs = getNotificaciones().map(n => n.id === id ? {...n, leida:true} : n);
+  setNotificaciones(notifs);
+  actualizarCampana();
+}
+function marcarTodasLeidas() {
+  const notifs = getNotificaciones().map(n => ({...n, leida:true}));
+  setNotificaciones(notifs);
+  actualizarCampana();
+}
+
+// Cerrar dropdown al hacer clic fuera
+document.addEventListener("click", function(e) {
+  const wrapper = document.getElementById("campanaWrapper");
+  if (!wrapper.contains(e.target)) {
+    document.getElementById("notifDropdown").classList.remove("show");
+  }
+});
+
+// ─── Notificación de bienvenida ──────────────────────────────────
+if (!localStorage.getItem("notif_bienvenida_mostrada")) {
+  const notifs = getNotificaciones();
+  notifs.unshift({
+    id: Date.now(),
+    titulo: "¡Bienvenido a COVIDAPP!",
+    mensaje: "Tu cuenta está lista. Crea recordatorios de citas desde Notificaciones.",
+    tipo: "sistema",
+    leida: false,
+    fecha: new Date().toISOString()
+  });
+  setNotificaciones(notifs);
+  localStorage.setItem("notif_bienvenida_mostrada", "1");
+}
+
+// ─── Init ────────────────────────────────────────────────────────
+actualizarCampana();
+</script>
+</body>
+</html>

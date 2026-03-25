@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notificaciones - COVIDAPP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f4f9f4; }
+    .notif-card {
+      border-left: 5px solid #198754;
+      transition: all 0.2s;
+    }
+    .notif-card.no-leida {
+      border-left-color: #0d6efd;
+      background-color: #eef4ff;
+    }
+    .notif-card.leida {
+      border-left-color: #adb5bd;
+      opacity: 0.75;
+    }
+    .badge-tipo {
+      font-size: 0.72em;
+    }
+    footer {
+      background-color: rgba(166, 240, 224, 0.8);
+      text-align: center;
+      padding: 12px;
+      margin-top: 60px;
+    }
+    footer a { color: green; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
+  <div class="container-fluid justify-content-between">
+    <a class="navbar-brand fw-bold text-success" href="bienvenida.html">COVIDAPP</a>
+    <div class="d-flex align-items-center gap-3">
+      <a href="bienvenida.html" class="btn btn-outline-secondary btn-sm">← Volver</a>
+      <a href="index.html" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div>
+      <h2 class="mb-0">🔔 Notificaciones</h2>
+      <small class="text-muted" id="resumen">Cargando...</small>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+      <select class="form-select form-select-sm" id="filtro" style="width:auto">
+        <option value="todas">Todas</option>
+        <option value="no-leidas">No leídas</option>
+        <option value="leidas">Leídas</option>
+        <option value="recordatorio">Recordatorios</option>
+        <option value="cita">Citas</option>
+        <option value="sistema">Sistema</option>
+      </select>
+      <button class="btn btn-sm btn-outline-primary" onclick="marcarTodasLeidas()">✔ Marcar todas como leídas</button>
+      <button class="btn btn-sm btn-outline-danger" onclick="eliminarLeidas()">🗑 Eliminar leídas</button>
+    </div>
+  </div>
+
+  <!-- Crear recordatorio manual -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white fw-bold">
+      ➕ Crear recordatorio de cita
+    </div>
+    <div class="card-body">
+      <form id="formRecordatorio" class="row g-2">
+        <div class="col-md-4">
+          <input type="text" class="form-control" id="tipoTerapia" placeholder="Tipo de terapia (ej: Terapia Física)" required>
+        </div>
+        <div class="col-md-3">
+          <input type="datetime-local" class="form-control" id="fechaCita" required>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" id="terapeuta" placeholder="Terapeuta (opcional)">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-success w-100">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de notificaciones -->
+  <div id="listaNotificaciones">
+    <!-- se rellena con JS -->
+  </div>
+
+  <p id="sinNotificaciones" class="text-center text-muted py-5 d-none">
+    No hay notificaciones para mostrar.
+  </p>
+</div>
+
+<footer>
+  <div>
+    <a href="#">Dirección</a> |
+    <a href="#">Número</a> |
+    <a href="#">Guía de ayuda a discapacitados</a>
+  </div>
+  <div class="text-muted mt-1"><small>©️ 2025 Universidad del Quindío | Alpha build v0.0.1</small></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// ─── Proteger página ────────────────────────────────────────────
+const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+const sesion = localStorage.getItem("sesionActiva");
+if (!sesion) { window.location.href = "index.html"; }
+
+// ─── Helpers localStorage ────────────────────────────────────────
+function getNotificaciones() {
+  return JSON.parse(localStorage.getItem("notificaciones") || "[]");
+}
+function setNotificaciones(arr) {
+  localStorage.setItem("notificaciones", JSON.stringify(arr));
+}
+function agregarNotificacion(titulo, mensaje, tipo) {
+  const notifs = getNotificaciones();
+  notifs.unshift({
+    id: Date.now(),
+    titulo,
+    mensaje,
+    tipo,          // 'recordatorio' | 'cita' | 'sistema'
+    leida: false,
+    fecha: new Date().toISOString()
+  });
+  setNotificaciones(notifs);
+}
+
+// ─── Tipos / colores ────────────────────────────────────────────
+const TIPOS = {
+  recordatorio: { color: "primary",  icono: "⏰", label: "Recordatorio" },
+  cita:         { color: "success",  icono: "📅", label: "Cita"         },
+  sistema:      { color: "secondary",icono: "🔔", label: "Sistema"      },
+};
+function infoTipo(tipo) {
+  return TIPOS[tipo] || TIPOS.sistema;
+}
+
+// ─── Renderizar ─────────────────────────────────────────────────
+function renderizar() {
+  const filtro = document.getElementById("filtro").value;
+  let notifs = getNotificaciones();
+
+  if (filtro === "no-leidas")   notifs = notifs.filter(n => !n.leida);
+  else if (filtro === "leidas") notifs = notifs.filter(n =>  n.leida);
+  else if (filtro !== "todas")  notifs = notifs.filter(n => n.tipo === filtro);
+
+  const total = getNotificaciones();
+  const noLeidas = total.filter(n => !n.leida).length;
+  document.getElementById("resumen").textContent =
+    `${total.length} total · ${noLeidas} sin leer`;
+
+  const lista = document.getElementById("listaNotificaciones");
+  const sinMsg = document.getElementById("sinNotificaciones");
+
+  if (notifs.length === 0) {
+    lista.innerHTML = "";
+    sinMsg.classList.remove("d-none");
+    return;
+  }
+  sinMsg.classList.add("d-none");
+
+  lista.innerHTML = notifs.map(n => {
+    const info  = infoTipo(n.tipo);
+    const fecha = new Date(n.fecha).toLocaleString("es-CO", {
+      dateStyle: "short", timeStyle: "short"
+    });
+    const claseLeida = n.leida ? "leida" : "no-leida";
+    return `
+      <div class="card notif-card ${claseLeida} mb-3 shadow-sm" id="notif-${n.id}">
+        <div class="card-body d-flex justify-content-between align-items-start gap-3">
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+              <span class="fs-5">${info.icono}</span>
+              <strong>${n.titulo}</strong>
+              <span class="badge bg-${info.color} badge-tipo">${info.label}</span>
+              ${!n.leida ? '<span class="badge bg-warning text-dark badge-tipo">Nueva</span>' : ''}
+            </div>
+            <p class="mb-1 text-secondary">${n.mensaje}</p>
+            <small class="text-muted">${fecha}</small>
+          </div>
+          <div class="d-flex flex-column gap-1" style="min-width:130px">
+            ${!n.leida ? `<button class="btn btn-sm btn-outline-primary" onclick="marcarLeida(${n.id})">✔ Marcar leída</button>` : ''}
+            <button class="btn btn-sm btn-outline-danger" onclick="eliminar(${n.id})">🗑 Eliminar</button>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+// ─── Acciones ────────────────────────────────────────────────────
+function marcarLeida(id) {
+  const notifs = getNotificaciones().map(n =>
+    n.id === id ? { ...n, leida: true } : n
+  );
+  setNotificaciones(notifs);
+  renderizar();
+  actualizarCampana();
+}
+function marcarTodasLeidas() {
+  const notifs = getNotificaciones().map(n => ({ ...n, leida: true }));
+  setNotificaciones(notifs);
+  renderizar();
+  actualizarCampana();
+}
+function eliminar(id) {
+  if (!confirm("¿Eliminar esta notificación?")) return;
+  setNotificaciones(getNotificaciones().filter(n => n.id !== id));
+  renderizar();
+  actualizarCampana();
+}
+function eliminarLeidas() {
+  if (!confirm("¿Eliminar todas las notificaciones leídas?")) return;
+  setNotificaciones(getNotificaciones().filter(n => !n.leida));
+  renderizar();
+  actualizarCampana();
+}
+// Actualiza el badge de la campana en bienvenida si hay iframe/otra pestaña
+function actualizarCampana() {
+  // Se refleja en bienvenida.html cuando recarga
+}
+
+// ─── Formulario de recordatorio ──────────────────────────────────
+document.getElementById("formRecordatorio").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const tipo      = document.getElementById("tipoTerapia").value.trim();
+  const fechaVal  = document.getElementById("fechaCita").value;
+  const terapeuta = document.getElementById("terapeuta").value.trim();
+
+  if (!tipo || !fechaVal) return;
+
+  const fecha = new Date(fechaVal);
+  const fechaStr = fecha.toLocaleDateString("es-CO", {
+    weekday:"long", day:"numeric", month:"long", year:"numeric"
+  });
+  const horaStr = fecha.toLocaleTimeString("es-CO", { hour:"2-digit", minute:"2-digit" });
+
+  const terapeutaInfo = terapeuta ? ` con ${terapeuta}` : "";
+  agregarNotificacion(
+    `Recuerde su ${tipo}`,
+    `Tiene una cita de ${tipo}${terapeutaInfo} el ${fechaStr} a las ${horaStr}.`,
+    "recordatorio"
+  );
+
+  this.reset();
+  renderizar();
+  actualizarCampana();
+  alert(`✅ Recordatorio agregado:\n"Recuerde su ${tipo}"`);
+});
+
+// ─── Filtro ──────────────────────────────────────────────────────
+document.getElementById("filtro").addEventListener("change", renderizar);
+
+// ─── Notificación de bienvenida si es primera visita ────────────
+if (!localStorage.getItem("notif_bienvenida_mostrada")) {
+  agregarNotificacion(
+    "¡Bienvenido a COVIDAPP!",
+    "Tu cuenta ha sido configurada correctamente. Puedes gestionar tus citas y recordatorios desde aquí.",
+    "sistema"
+  );
+  localStorage.setItem("notif_bienvenida_mostrada", "1");
+}
+
+// ─── Init ────────────────────────────────────────────────────────
+renderizar();
+</script>
+</body>
+</html>
