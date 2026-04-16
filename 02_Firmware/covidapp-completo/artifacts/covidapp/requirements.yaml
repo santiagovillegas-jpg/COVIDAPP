@@ -1,0 +1,28 @@
+packages:
+  "framer-motion": "For page transitions and polished UI animations"
+  "react-hook-form": "For robust form state management"
+  "@hookform/resolvers": "For Zod schema validation integration"
+  "date-fns": "For formatting human-readable dates"
+  "clsx": "For conditional class merging"
+  "tailwind-merge": "For merging Tailwind utility classes without conflicts"
+
+images:
+  - path: "artifacts/covidapp/public/images/hero-bg.png"
+    description: "Tranquil healthcare facility lobby with soft natural lighting, indoor plants, and a welcoming professional atmosphere. Clean architectural photography with soft green and white tones."
+    aspect_ratio: "16:9"
+  - path: "artifacts/covidapp/public/images/logo.png"
+    description: "Minimalist abstract logo for a healthcare rehabilitation foundation, using lime green and leaf motifs on a transparent background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/covidapp/public/images/gallery-1.png"
+    description: "Physical therapy session in a modern, bright rehabilitation center with green accents and professional equipment."
+    aspect_ratio: "16:9"
+  - path: "artifacts/covidapp/public/images/gallery-2.png"
+    description: "Occupational therapy tools and equipment neatly arranged on a clean white table under bright, professional lighting."
+    aspect_ratio: "16:9"
+  - path: "artifacts/covidapp/public/images/gallery-3.png"
+    description: "Speech therapy session with a patient and therapist smiling in a comfortable, modern healthcare setting."
+    aspect_ratio: "16:9"
+
+notes:
+  - Expect API endpoints exactly as defined in the generated hooks from @workspace/api-client-react.
+  - The application uses token/cookie based auth with /api/auth/me for session checks.
