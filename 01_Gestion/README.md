@@ -1,35 +1,9 @@
 
 Tareas de trabajo : 
 
-1 Gestion de usurio :
-
-- registro 
-- inicio de sesion 
-- control de acceso 
-
-2 Gestion de Datos del Paciente :
-
-- Registro de datos personales 
-- Actulizacion de informacion 
-- Almacenamiento seguro 
-
-3 Registro diagnostico :
-
--Registro diagnostico 
--editor historial medio 
--control historial clinico 
--Trazabilidad medico 
-
-4 Gestion de Notificaciones 
- 
- - Gention recordatorio automatico 
- - enviar alertas de citas 
- - Aviso de seguimiento terapetico 
-
- 5 Gestion de Recursos y lugar de Apoyo 
-
- - mostrar lugar  accesibles 
- - Informacion cultural incluvo 
- - contacto  con fundacion  
-
+### 💻 2. FIRMWARE / SOFTWARE (Si aplica a esta tarea)
+- [ ] **Compilación limpia:** El código compila con 0 Errores y 0 Warnings.
+- [ ] **Código No-Bloqueante:** No se están usando `delay()` para tareas concurrentes.
+- [ ] **Repositorio:** El código está subido a GitHub (Push realizado).
+- [ ] **Trazabilidad:** El Commit incluye la palabra clave para cerrar esta tarea (Ej: `Closes #ID`).
 
