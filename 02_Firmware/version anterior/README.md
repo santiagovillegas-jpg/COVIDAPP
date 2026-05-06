@@ -1,21 +1,36 @@
-# Desarrollo de Software e Interfaz (Web App) - COVIDAPP
 
-Este directorio alberga el código fuente de la plataforma web de **COVIDAPP**, integrando el diseño de la interfaz de usuario (Front-end) y la lógica de navegación esencial para la experiencia de usuario de **Covida**.
+Tareas de trabajo : 
 
-## Componentes de la Aplicación
-El sistema se compone de los siguientes módulos funcionales:
+1 Gestion de usurio :
 
-- **index.html:** Punto de entrada principal y pantalla de acceso al sistema.
-- **bienvenida.html:** Panel informativo y de introducción para el usuario.
-- **registro.html:** Módulo de captura de datos para nuevos pacientes y usuarios.
-- **Gallery.html:** Interfaz de visualización de recursos y multimedia de la institución.
+- registro 
+- inicio de sesion 
+- control de acceso 
 
-## Especificaciones Técnicas
-*   **Lenguaje Base:** HTML5 / CSS3 / JavaScript.
-*   **Arquitectura:** Diseño responsivo adaptado para dispositivos de escritorio y móviles.
-*   **Enfoque:** Optimización de la experiencia del usuario final (UX) y usabilidad institucional.
+2 Gestion de Datos del Paciente :
 
-## Próximas Implementaciones
-- Conectividad con la API del servidor (Backend).
-- Validación de datos en formularios mediante scripts de cliente.
-- Dinamismo en la carga de contenidos mediante integración de base de datos.
+- Registro de datos personales 
+- Actulizacion de informacion 
+- Almacenamiento seguro 
+
+3 Registro diagnostico :
+
+-Registro diagnostico 
+-editor historial medio 
+-control historial clinico 
+-Trazabilidad medico 
+
+4 Gestion de Notificaciones 
+ 
+ - Gention recordatorio automatico 
+ - enviar alertas de citas 
+ - Aviso de seguimiento terapetico 
+
+ 5 Gestion de Recursos y lugar de Apoyo 
+
+ - mostrar lugar  accesibles 
+ - Informacion cultural incluvo 
+ - contacto  con fundacion  
+
+-
+-
