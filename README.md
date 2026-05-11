@@ -1,26 +1,32 @@
-# COVIDAPP - Sistema de Gestión Institucional Covida
+# 🏥 COVIDAPP - Sistema de Gestión Institucional Covida
 
-## Descripción del Proyecto
-**COVIDAPP** es una plataforma digital integral desarrollada para la institución **Covida**, diseñada para optimizar la gestión de usuarios, pacientes y personal administrativo. La solución se centra en proporcionar una interfaz web intuitiva y responsiva que permita el seguimiento eficiente de datos en un entorno institucional.
+## 🌟 Descripción del Proyecto
+**COVIDAPP** es una plataforma digital integral diseñada para la institución **Covida**, enfocada en optimizar la gestión de pacientes y personal médico. La solución proporciona una interfaz web moderna y responsiva bajo una arquitectura robusta y escalable.
 
-El enfoque actual del proyecto es el desarrollo de una arquitectura de software robusta, priorizando la experiencia del usuario (UX) y la integridad de la información.
+## 📂 Estructura del Repositorio
+El proyecto se organiza en tres pilares fundamentales:
 
-## Estructura del Proyecto
-El repositorio está organizado en tres pilares fundamentales que cubren el ciclo de vida del desarrollo:
+*   **[📁 01_Gestion](./01_Gestion):** Planificación, cronogramas y protocolos de prueba administrativos.
+*   **[🛠️ 02_Firmware](./02_Firmware):** El núcleo técnico del sistema. Contiene el monorepo con el backend, frontend y base de datos, además de configuraciones de despliegue.
+*   **[📚 03_Dossier](./03_Dossier):** Documentación técnica formal (CDIO III), manuales y evidencias de diseño.
 
-*   **[01_Gestion](./01_Gestion):** Contiene la documentación administrativa, planificación estratégica, actas de seguimiento y cronogramas del proyecto.
-*   **[02_Firmware (Web App)](./02_Firmware):** Núcleo del desarrollo de software. Incluye la interfaz de usuario (Front-end), prototipos de navegación y la lógica de interacción del sistema.
-*   **[03_Dossier](./03_Dossier):** Repositorio de documentación técnica formal, incluyendo el documento CDIO III y manuales técnicos.
+## 🚀 Tecnologías Principales
+- **Fullstack:** TypeScript, Node.js, React.
+- **Estilizado:** Tailwind CSS.
+- **Base de Datos:** PostgreSQL + Drizzle ORM.
+- **Gestión:** pnpm Workspaces.
 
-## Estado de Desarrollo
-El proyecto se encuentra en una fase avanzada de prototipado funcional:
+## 📈 Estado de Desarrollo
+- [x] **Arquitectura Consolidada:** Monorepo integrado y funcional.
+- [x] **Diseño UI/UX:** Implementado para roles de médico y paciente.
+- [x] **Backend & API:** Gestión de citas y autenticación operativa.
+- [ ] **Validación Final:** Pruebas integrales de usuario en curso.
 
-- [x] **Diseño de Interfaz (UI/UX):** Implementado y optimizado para navegación web y móvil.
-- [x] **Arquitectura de Navegación:** Estructura de archivos y flujo de usuario definidos.
-- [ ] **Persistencia de Datos:** Integración de servicios de backend y base de datos (En planificación).
-- [ ] **Validación Sistémica:** Pruebas de usuario y despliegue final (Pendiente).
-
-## Equipo de Trabajo
+## 👥 Equipo de Trabajo
 *   **Juan José Botero**
 *   **Santiago Villegas**
 *   **Juan Pablo García**
+
+---
+*Digitalizando el cuidado, optimizando la vida.*
+
